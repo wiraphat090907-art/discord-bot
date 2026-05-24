@@ -1,5 +1,6 @@
 import nextcord
 from nextcord.ext import commands
+import os
 
 intents = nextcord.Intents.default()
 intents.message_content = True
@@ -18,11 +19,11 @@ async def on_ready():
     ))
     guild = bot.get_guild(SERVER_ID)
     vc = nextcord.utils.get(guild.channels, id=VOICE_CHANNEL_ID)
-    await guild.change_voice_state(channel=vc, self_mute=False, self_deaf=True)
+    await guild.change_voice_state(channel=vc, self_mute=False, selfdeaf=True)
     print(f'✅ บอทพร้อมแล้ว: {bot.user}')
 
 @bot.command()
 async def ping(ctx):
     await ctx.send(f'🏓 Pong! {round(bot.latency * 1000)}ms')
 
-bot.run("MTUwNzk5MTMyMzkwOTY4OTQ4Ng.GPmf2H.2rhQXcAGADsJaL6RiG8hkm6-p5SxWLg2AP9H50")
+bot.run(os.environ["DISCORD_TOKEN"])
