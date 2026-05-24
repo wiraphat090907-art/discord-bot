@@ -19,7 +19,7 @@ async def on_ready():
     ))
     guild = bot.get_guild(SERVER_ID)
     vc = nextcord.utils.get(guild.channels, id=VOICE_CHANNEL_ID)
-    await guild.change_voice_state(channel=vc, self_mute=False, selfdeaf=True)
+    await guild.change_voice_state(channel=vc, self_mute=False, self_deaf=True)
     print(f'✅ บอทพร้อมแล้ว: {bot.user}')
 
 @bot.command()
